@@ -13,19 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::domain(getenv('APP_DOMAIN1'))->group(function() {
-
-});
-
-Route::domain(getenv('APP_DOMAIN2'))->group(function() {
-    Route::get('/test', 'api\Subscribe@test');
-
-    Route::get('/abc', function(){
-        return 'asdasdasf';
-    });
-});
-
-
 Route::get('/', function () {
     return view('welcome');
 });

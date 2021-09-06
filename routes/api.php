@@ -14,17 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::domain(getenv('APP_DOMAIN1'))->middleware('api')->group(function() {
-//
-//});
-//
-//Route::domain(getenv('APP_DOMAIN2'))->middleware('api')->group(function() {
-//    Route::get('/test', 'api\Subscribe@test');
-//
-//    Route::get('/abc', function(){
-//       return 'asdasdasf';
-//    });
-//});
+Route::domain(getenv('APP_DOMAIN1'))->group(function() {
+
+});
+
+Route::domain(getenv('APP_DOMAIN2'))->group(function() {
+
+    Route::resource('/subscribe', 'Api\SubscribeController');
+
+});
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
