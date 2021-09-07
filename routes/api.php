@@ -33,4 +33,7 @@ Route::prefix('post/')->group(function() {
     Route::get('create', 'Api\PostsController@createPost');
 });
 
+Route::prefix('subscription/')->group(function() {
+    Route::post('/', 'Api\SubscribeController@store');
+});
 

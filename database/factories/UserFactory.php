@@ -20,8 +20,8 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'created_at' => $faker->dateTime($max = 'now'),
-        'updated_at' => $faker->dateTime($max = 'now'),
+        'created_at' => now(), //$faker->dateTime($max = 'now'),
+        'updated_at' => now() //$faker->dateTime($max = 'now'),
     ];
 });
 

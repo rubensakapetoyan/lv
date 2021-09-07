@@ -39,6 +39,5 @@ class NoticeEmail extends Mailable
                 'description' => $this->description
             ]
         );
-//        return $this->view('view.name');
     }
 }
