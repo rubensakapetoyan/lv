@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\SubscribeService;
 
 class SubscribeController extends Controller
 {
@@ -14,8 +15,7 @@ class SubscribeController extends Controller
      */
     public function index()
     {
-        //
-        return view('subscribe2');
+
     }
 
     /**

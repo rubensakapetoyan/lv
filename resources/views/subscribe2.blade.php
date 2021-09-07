@@ -8,6 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-<h1>test 2</h1>
+<form action="/api/subscribe" method="POST">
+    <input type="hidden" name="resource" value="site1">
+    <input type="text" name="name">
+    <input type="email" name="email">
+    <button>Subscribe</button>
+</form>
 </body>
 </html>

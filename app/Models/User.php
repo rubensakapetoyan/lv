@@ -16,11 +16,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email'
     ];
 
-    public function getNotice() {
-        return $this->hasOne('App\Models\Notice');
+
+    public function getWebsites() {
+        return $this->hasMany('subscribes', 'website_id', 'subscriber_id');
     }
 
 }

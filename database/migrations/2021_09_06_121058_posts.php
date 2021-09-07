@@ -13,14 +13,18 @@ class Posts extends Migration
      */
     public function up()
     {
+//        Schema::disableForeignKeyConstraints();
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('website_id')->nullable();
             $table->string('content')->nullable();
-            $table->timestamp('title')->nullable();
+            $table->string('title')->nullable();
+            $table->foreign('website_id')->references('id')->on('websites');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
+//        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -30,6 +34,6 @@ class Posts extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('posts');
     }
 }
