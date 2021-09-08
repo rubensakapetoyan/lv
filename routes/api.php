@@ -27,10 +27,13 @@ Route::domain(getenv('APP_DOMAIN2'))->group(function() {
 });
 
 
-
-
 Route::prefix('post/')->group(function() {
-    Route::get('create', 'Api\PostsController@createPost');
+    Route::post('create', 'Api\PostsController@createPost');
+    Route::put('update/{id}', 'Api\PostsController@update');
+    Route::get('per/website/{id}', 'Api\PostsController@showPerWebsite');
+    Route::get('all', 'Api\PostsController@showAll');
+    Route::delete('remove/{id}', 'Api\PostsController@destroy');
+
 });
 
 Route::prefix('subscription/')->group(function() {

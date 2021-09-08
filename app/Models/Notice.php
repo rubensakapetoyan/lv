@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notice extends Model
 {
-    //
+    protected $fillable = ['noticer', 'noticed'];
+    public $timestamps = true;
 }

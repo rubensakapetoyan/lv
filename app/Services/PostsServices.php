@@ -2,13 +2,11 @@
 
 namespace App\Services;
 
-use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Subscribe;
 use App\Models\User;
 use App\Models\Website;
 use App\Models\Notice;
-use App\Jobs\SendSubscribtionEmail;
 
 /**
  * Class PostsServices
@@ -43,15 +41,35 @@ class PostsServices {
 
     }
 
-    public function setToJob() {
-        $subscribes = $this->subscribe->getAllData()->groupBy('subscriber_id');
+    public function getSubscribers($website) {
+        $subscribes = $this->website->find($website)->subscribers;
         if($subscribes) {
             $arr = [];
             foreach($subscribes as $subscriber) {
-                $arr[] = $subscriber[0]->subscribers[0];//$subscriber->subscribers->map( function($item)  { return $item; });
-//                $this->dispatch(new SendSubscribtionEmail($subscriber->email,'',''));
+                $arr[] = $subscriber;
             }
             return $arr;
         }
+
     }
+
+    public function updatePost($id, $req) {
+
+        $updateArray = [];
+        if($req->title)
+            $updateArray['title'] = $req->title;
+        if($req->content)
+            $updateArray['content'] = $req->content;
+        if($req->website)
+            $updateArray['website_id'] = $req->website;
+        if($req->user)
+            $updateArray['user_id'] = $req->user;
+
+        $model = $this->post->where('id', $id)->update($updateArray);
+        if($model)
+            return true;
+
+        return false;
+    }
+
 }

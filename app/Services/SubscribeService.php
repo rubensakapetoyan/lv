@@ -35,9 +35,7 @@ class SubscribeService {
         }
 
         $exists = $this->subscribe->where('subscriber_id', $req->subscriber)->where('website_id', $req->website)->first();
-        /*$this->subscribe->cursor()->filter(function($s) use($req) {
-            return $s->subscriber_id == $req->subscriber && $s->website_id == $req->website;
-        });*/
+
         if($exists) {
             return response()->json([
                 'status' => 'o',
