@@ -13,7 +13,7 @@ class Posts extends Migration
      */
     public function up()
     {
-//        Schema::disableForeignKeyConstraints();
+        Schema::disableForeignKeyConstraints();
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
@@ -24,7 +24,7 @@ class Posts extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
-//        Schema::enableForeignKeyConstraints();
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

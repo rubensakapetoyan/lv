@@ -18,10 +18,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email'
     ];
+    public $timestamps = true;
 
 
-    public function getWebsites() {
-        return $this->hasMany('subscribes', 'website_id', 'subscriber_id');
+    public function websites() {
+        return $this
+            ->belongsToMany(Website::class, 'subscribes', 'subscriber_id', 'website_id')->withTimestamps();
     }
-
 }

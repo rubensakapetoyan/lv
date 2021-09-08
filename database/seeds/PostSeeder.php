@@ -15,17 +15,17 @@ class PostSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $usersIDs = DB::table('users')->pluck('id')->toArray();
-        $websitesIDs = DB::table('websites')->pluck('id')->toArray();
+//        $usersIDs = DB::table('users')->pluck('id')->toArray();
+//        $websitesIDs = DB::table('websites')->pluck('id')->toArray();
 
         foreach (range(1,20) as $index) {
             DB::table('posts')->insert([
-                'user_id' => array_rand($usersIDs),
+                'user_id' => $faker->numberBetween(2, 11), //array_rand($usersIDs),
                 'content' => $faker->realText(rand(10,100)),
                 'website_id' => $faker->numberBetween(1, 5),
                 'title' => $faker->title,
-                'created_at' => $faker->dateTime($max = 'now'),
-                'updated_at' => $faker->dateTime($max = 'now'),
+                'created_at' => now(), //$faker->dateTime($max = 'now'),
+                'updated_at' => now() //$faker->dateTime($max = 'now'),
             ]);
         }
     }
